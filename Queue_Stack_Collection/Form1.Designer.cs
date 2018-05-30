@@ -52,6 +52,7 @@
             this.btnPush = new System.Windows.Forms.Button();
             this.txtStackAddValue = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.tbnQ2RandVal = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -99,9 +100,9 @@
             this.btnEnqueueRandVal.Location = new System.Drawing.Point(66, 219);
             this.btnEnqueueRandVal.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnqueueRandVal.Name = "btnEnqueueRandVal";
-            this.btnEnqueueRandVal.Size = new System.Drawing.Size(383, 39);
+            this.btnEnqueueRandVal.Size = new System.Drawing.Size(177, 39);
             this.btnEnqueueRandVal.TabIndex = 3;
-            this.btnEnqueueRandVal.Text = "EnQueue Random Value";
+            this.btnEnqueueRandVal.Text = "Q1 Random Value";
             this.btnEnqueueRandVal.UseVisualStyleBackColor = true;
             this.btnEnqueueRandVal.Click += new System.EventHandler(this.btnEnqueueRandVal_Click);
             // 
@@ -371,11 +372,26 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "Value";
             // 
+            // tbnQ2RandVal
+            // 
+            this.tbnQ2RandVal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tbnQ2RandVal.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbnQ2RandVal.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.tbnQ2RandVal.Location = new System.Drawing.Point(267, 219);
+            this.tbnQ2RandVal.Margin = new System.Windows.Forms.Padding(4);
+            this.tbnQ2RandVal.Name = "tbnQ2RandVal";
+            this.tbnQ2RandVal.Size = new System.Drawing.Size(182, 39);
+            this.tbnQ2RandVal.TabIndex = 24;
+            this.tbnQ2RandVal.Text = "Q2 Random Value";
+            this.tbnQ2RandVal.UseVisualStyleBackColor = true;
+            this.tbnQ2RandVal.Click += new System.EventHandler(this.tbnQ2RandVal_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1305, 638);
+            this.Controls.Add(this.tbnQ2RandVal);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
@@ -439,6 +455,7 @@
         private System.Windows.Forms.Button btnPush;
         private System.Windows.Forms.TextBox txtStackAddValue;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button tbnQ2RandVal;
     }
 }
 

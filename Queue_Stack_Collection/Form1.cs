@@ -43,11 +43,17 @@ namespace Queue_Stack_Collection
         private void btnEnqueueRandVal_Click(object sender, EventArgs e)
         {
             Random rand = new Random();
-            int x = rand.Next(-999, 1000);
-            int y = rand.Next(-999, 1000);
+            int x = rand.Next(0, 1000);
             queue1.Enqueue(x);
-            queue2.Enqueue(y);
             Display(queue1);
+            
+        }
+
+        private void tbnQ2RandVal_Click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+            int x = rand.Next(-999, 1000);
+            queue2.Enqueue(x);
             Display2(queue2);
         }
         
@@ -84,31 +90,16 @@ namespace Queue_Stack_Collection
 
         private static Queue<int> SimpleMerge(Queue<int> q1, Queue<int> q2)
         {
-            Queue<int> q3 = new Queue<int>();
+            Queue<int> q3 = new Queue<int>(100);
             if (q1.Count == 0)
                 return q2;
             if (q2.Count == 0)
                 return q1;
 
-            int size = q1.Count;
-
-            while (q2.Count !=0 || size != 0)
-            {
-                if (q1.Peek() >= q2.Peek())
-                {
-                    q3.Enqueue(q1.Dequeue());
-                    size--;
-                }
-                else
-                {
-                    q3.Enqueue(q2.Dequeue());
-                }
-            }
-
-            while (q1.Count !=0 || size != 0)
+            while (q1.Count != 0 || q2.Count != 0)
             {
                 q3.Enqueue(q1.Dequeue());
-                size--;
+                q3.Enqueue(q2.Dequeue());
             }
 
             return q3;
@@ -116,13 +107,16 @@ namespace Queue_Stack_Collection
 
         private static Queue<int> RemoveOdds(Queue<int> q1)
         {
-            foreach (int x in q1)
+            Queue<int> newQ = new Queue<int>(50);
+            
+            while (q1.Count != 0)
             {
-                if (x % 2 != 0)
-                    q1.Dequeue();
+                if (q1.Dequeue() % 2 != 0)
+                    newQ.Enqueue(q1.Dequeue());
             }
+            
 
-            return q1;
+            return newQ;
         }
 
         private void btnPeek_Click(object sender, EventArgs e)
@@ -160,14 +154,12 @@ namespace Queue_Stack_Collection
 
         private void btnMergeQueues_Click(object sender, EventArgs e)
         {
-            SimpleMerge(queue1, queue2);
-            Display(queue1);
+            Display(SimpleMerge(queue1, queue2));
         }
 
         private void btnRemoveOdds_Click(object sender, EventArgs e)
         {
-            RemoveOdds(queue1);
-            Display(queue1);
+            Display(RemoveOdds(queue1));
         }
 
         private void btnPush_Click(object sender, EventArgs e)
@@ -226,6 +218,8 @@ namespace Queue_Stack_Collection
  
             }
         }
+
+        
     }
 }
 /*

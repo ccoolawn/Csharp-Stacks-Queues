@@ -13,13 +13,15 @@ namespace Queue_Stack_Collection
 {
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
-        Queue<int> queue1 = new Queue<int>(50);
-        Queue<int> queue2 = new Queue<int>(50);
-        Stack<int> stack1 = new Stack<int>(50);
         public Form1()
         {
             InitializeComponent();
         }
+
+        /*----------------------Queues-----------------------*/
+        Queue<int> queue1 = new Queue<int>(50);
+        Queue<int> queue2 = new Queue<int>(50);
+
 
         private void btnEnQueue_Click(object sender, EventArgs e)
         {
@@ -63,7 +65,53 @@ namespace Queue_Stack_Collection
             MetroFramework.MetroMessageBox.Show(this,$"item dequeued: {x}", " Success ", MessageBoxButtons.OK, MessageBoxIcon.Question);
             Display(queue1);
         }
-        //helper methods
+
+        private void btnPeek_Click(object sender, EventArgs e)
+        {
+            int x = queue1.Peek();
+            MetroFramework.MetroMessageBox.Show(this,$"This item is peeked: {x}", " Success ", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            Display(queue1);
+        }
+
+        private void btnEnQueue2_Click(object sender, EventArgs e)
+        {
+            //add value from textbox
+            try
+            {
+                int value = int.Parse(txtAddValue.Text);
+                queue2.Enqueue(value);
+                Display2(queue2);
+                //optional
+                txtAddValue.Focus();
+                txtAddValue.SelectAll();
+            }
+            catch (FormatException fe)
+            {
+                MetroFramework.MetroMessageBox.Show(this, fe.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                throw;
+            }
+        }
+
+        private void btnDequeue2_Click(object sender, EventArgs e)
+        {
+            int x = queue2.Dequeue();
+            MetroFramework.MetroMessageBox.Show(this,$"item dequeued: {x}", " Success ", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            Display2(queue2);
+        }
+
+        private void btnMergeQueues_Click(object sender, EventArgs e)
+        {
+            Display(SimpleMerge(queue1, queue2));
+        }
+
+        private void btnRemoveOdds_Click(object sender, EventArgs e)
+        {
+            Display(RemoveOdds(queue1));
+        }
+
+
+        /**********************Queue helper methods************************/
+        
         private void Display(Queue<int> queue)
         {
             //display in listbox1
@@ -119,48 +167,12 @@ namespace Queue_Stack_Collection
             return newQ;
         }
 
-        private void btnPeek_Click(object sender, EventArgs e)
-        {
-            int x = queue1.Peek();
-            MetroFramework.MetroMessageBox.Show(this,$"This item is peeked: {x}", " Success ", MessageBoxButtons.OK, MessageBoxIcon.Question);
-            Display(queue1);
-        }
+        
 
-        private void btnEnQueue2_Click(object sender, EventArgs e)
-        {
-            //add value from textbox
-            try
-            {
-                int value = int.Parse(txtAddValue.Text);
-                queue2.Enqueue(value);
-                Display2(queue2);
-                //optional
-                txtAddValue.Focus();
-                txtAddValue.SelectAll();
-            }
-            catch (FormatException fe)
-            {
-                MetroFramework.MetroMessageBox.Show(this, fe.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                throw;
-            }
-        }
-
-        private void btnDequeue2_Click(object sender, EventArgs e)
-        {
-            int x = queue2.Dequeue();
-            MetroFramework.MetroMessageBox.Show(this,$"item dequeued: {x}", " Success ", MessageBoxButtons.OK, MessageBoxIcon.Question);
-            Display2(queue2);
-        }
-
-        private void btnMergeQueues_Click(object sender, EventArgs e)
-        {
-            Display(SimpleMerge(queue1, queue2));
-        }
-
-        private void btnRemoveOdds_Click(object sender, EventArgs e)
-        {
-            Display(RemoveOdds(queue1));
-        }
+        /*----------------------Stacks-----------------------*/
+                
+        Stack<int> stack1 = new Stack<int>(50);
+        Stack<int> stack2 = new Stack<int>(50);
 
         private void btnPush_Click(object sender, EventArgs e)
         {
@@ -181,23 +193,10 @@ namespace Queue_Stack_Collection
             }
         }
 
-        private void DisplayStack(Stack<int> stack)
-        {
-            //display in listbox1
-            listBox3.Items.Clear();
-            foreach (int x in stack)
-            {
-                listBox3.Items.Add(x);
-                //scroll
-                listBox3.TopIndex = listBox3.Items.Count - 1;
-            }
-        }
-
         private void btnPushRandom_Click(object sender, EventArgs e)
         {
             Random rand = new Random();
             int x = rand.Next(-999, 1000);
-            int y = rand.Next(-999, 1000);
             stack1.Push(x);
             DisplayStack(stack1);
         }
@@ -219,7 +218,128 @@ namespace Queue_Stack_Collection
             }
         }
 
+        private void btnPushStack2_Click(object sender, EventArgs e)
+        {
+            //add value from textbox
+            try
+            {
+                int value = int.Parse(txtStackAddValue.Text);
+                stack2.Push(value);
+                DisplayStack2(stack2);
+                //optional
+                txtStackAddValue.Focus();
+                txtStackAddValue.SelectAll();
+            }
+            catch (FormatException fe)
+            {
+                MetroFramework.MetroMessageBox.Show(this, fe.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                throw;
+            }
+        }
+
+        private void btnPopStack2_Click(object sender, EventArgs e)
+        {
+            if (stack2.Count > 0)
+            {
+                int x = stack2.Pop();
+                MetroFramework.MetroMessageBox.Show(this,$"{x} was popped out of the 2nd stack", " Success ", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                DisplayStack(stack1);
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this,"Illegal Operation: stack is Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+ 
+            }
+        }
+
+        private void btnStack2RandVal_Click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+            int x = rand.Next(-999, 1000);
+            stack2.Push(x);
+            DisplayStack2(stack2);
+        }
+
+        private void btnStack2Q_Click(object sender, EventArgs e)
+        {
+            DisplayNewQueue(convertStackToQueue(stack1));
+        }
         
+        private void btnReverseStack2_Click(object sender, EventArgs e)
+        {
+            stack2.Reverse();
+            DisplayStack2(stack2);
+        }
+        
+        private void btnRemoveOddsStk1_Click(object sender, EventArgs e)
+        {
+            DisplayStack(RemoveOdds(stack1));
+        }
+
+        /**********************Stack helper methods************************/
+
+        private void DisplayStack(Stack<int> stack)
+        {
+            //display in listbox1
+            listBox4.Items.Clear();
+            foreach (int x in stack)
+            {
+                listBox4.Items.Add(x);
+                //scroll
+                listBox4.TopIndex = listBox4.Items.Count - 1;
+            }
+        }
+
+        private void DisplayStack2(Stack<int> stack)
+        {
+            //display in listbox1
+            listBox3.Items.Clear();
+            foreach (int x in stack)
+            {
+                listBox3.Items.Add(x);
+                //scroll
+                listBox3.TopIndex = listBox3.Items.Count - 1;
+            }
+        }
+
+        private static Queue<int> convertStackToQueue(Stack<int> stack)
+        {
+            Queue<int> q = new Queue<int>();
+
+            while (stack.Count != 0)
+            {
+                q.Enqueue(stack.Pop());
+            }
+
+            return q;
+        }
+
+        private void DisplayNewQueue(Queue<int> q)
+        {
+            listBox4.Items.Clear();
+            foreach (int x in q)
+            {
+                listBox4.Items.Add(x);
+                //scroll
+                listBox4.TopIndex = listBox4.Items.Count - 1;
+            }
+        }
+
+        private static Stack<int> RemoveOdds(Stack<int> s1)
+        {
+            Stack<int> newStk = new Stack<int>(50);
+
+            foreach (int x in s1)
+            {
+                if (x % 2 == 0)
+                {
+                    newStk.Push(x);
+                }
+            }
+ 
+            return newStk;
+        }
+
     }
 }
 /*

@@ -1,0 +1,14 @@
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\bin\Debug\Queue_Stack_Collection.exe.config
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\bin\Debug\Queue_Stack_Collection.exe
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\bin\Debug\Queue_Stack_Collection.pdb
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\bin\Debug\MetroFramework.Design.dll
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\bin\Debug\MetroFramework.dll
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\bin\Debug\MetroFramework.Fonts.dll
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\obj\Debug\Queue_Stack_Collection.csprojAssemblyReference.cache
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\obj\Debug\Queue_Stack_Collection.Form1.resources
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\obj\Debug\Queue_Stack_Collection.Properties.Resources.resources
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\obj\Debug\Queue_Stack_Collection.csproj.GenerateResource.cache
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\obj\Debug\Queue_Stack_Collection.csproj.CoreCompileInputs.cache
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\obj\Debug\Queue_Stack_Collection.csproj.CopyComplete
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\obj\Debug\Queue_Stack_Collection.exe
+X:\OneDrive - Renton Technical College\OOP Csharp\Queue_Stack_Collection\Queue_Stack_Collection\obj\Debug\Queue_Stack_Collection.pdb

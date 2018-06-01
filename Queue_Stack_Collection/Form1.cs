@@ -139,6 +139,7 @@ namespace Queue_Stack_Collection
         private static Queue<int> SimpleMerge(Queue<int> q1, Queue<int> q2)
         {
             Queue<int> q3 = new Queue<int>(100);
+
             if (q1.Count == 0)
                 return q2;
             if (q2.Count == 0)
@@ -163,7 +164,6 @@ namespace Queue_Stack_Collection
                     newQ.Enqueue(q1.Dequeue());
             }
             
-
             return newQ;
         }
 
@@ -208,12 +208,12 @@ namespace Queue_Stack_Collection
             if (stack1.Count > 0)
             {
                 int x = stack1.Pop();
-                MetroFramework.MetroMessageBox.Show(this,$"{x} was popped out of the stack", " Success ", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MetroFramework.MetroMessageBox.Show(this, $"{x} was popped out of the stack", " Success ", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 DisplayStack(stack1);
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this,"Illegal Operation: stack is Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MetroFramework.MetroMessageBox.Show(this, "Illegal Operation: stack is Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
  
             }
         }
@@ -243,12 +243,11 @@ namespace Queue_Stack_Collection
             {
                 int x = stack2.Pop();
                 MetroFramework.MetroMessageBox.Show(this,$"{x} was popped out of the 2nd stack", " Success ", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                DisplayStack(stack1);
+                DisplayStack(stack2);
             }
             else
             {
                 MetroFramework.MetroMessageBox.Show(this,"Illegal Operation: stack is Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
- 
             }
         }
 
@@ -263,12 +262,13 @@ namespace Queue_Stack_Collection
         private void btnStack2Q_Click(object sender, EventArgs e)
         {
             DisplayNewQueue(convertStackToQueue(stack1));
+            MetroFramework.MetroMessageBox.Show(this, "Stack 1 was converted to a Queue in ListBox 2.", " Success ", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         
         private void btnReverseStack2_Click(object sender, EventArgs e)
         {
-            stack2.Reverse();
-            DisplayStack2(stack2);
+
+            DisplayStack2(ReverseStack(stack2));
         }
         
         private void btnRemoveOddsStk1_Click(object sender, EventArgs e)
@@ -310,19 +310,32 @@ namespace Queue_Stack_Collection
             {
                 q.Enqueue(stack.Pop());
             }
-
+            
             return q;
         }
 
         private void DisplayNewQueue(Queue<int> q)
         {
-            listBox4.Items.Clear();
+            listBox2.Items.Clear();
             foreach (int x in q)
             {
-                listBox4.Items.Add(x);
+                listBox2.Items.Add(x);
                 //scroll
-                listBox4.TopIndex = listBox4.Items.Count - 1;
+                listBox2.TopIndex = listBox2.Items.Count - 1;
             }
+        }
+
+        private static Stack<int> ReverseStack(Stack<int> q1)
+        {
+            q1.Reverse();
+            Stack<int> newStk = new Stack<int>(50);
+
+            foreach (int x in q1)
+            {
+               newStk.Push(x); 
+            }
+
+            return newStk;
         }
 
         private static Stack<int> RemoveOdds(Stack<int> s1)
@@ -359,12 +372,13 @@ namespace Queue_Stack_Collection
  *    have a button that calls this method and display the queue
  *
  * Excercise: 2
- * define a method that takes two stacks and merge them
+ * 1. define a method that takes two stacks and merge them
  *
- * define a method "convertStackToQueue" that takes a stack and returns a queue
+ * 2. define a method "convertStackToQueue" that takes a stack and returns a queue
  * with all the items from the stack
  *
- * reverse a stack using another stack
- * remove all the odd value from a stack while maintaining the
- * same original sequence
+ * 3. reverse a stack using another stack
+ *
+ * 4. remove all the odd value from a stack while maintaining the
+ *    same original sequence
  */
